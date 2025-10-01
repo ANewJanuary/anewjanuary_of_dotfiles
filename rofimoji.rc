@@ -1,0 +1,3 @@
+action = copy
+selector = wofi
+files = [emojis, math,superscripts_and_subscripts, greek_and_coptic, greek]

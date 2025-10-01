@@ -1,0 +1,9 @@
+term=alacritty
+location=center
+width=500
+prompt= Searc
+allow_markup=true
+allow_images=true
+line_wrap=false
+lines=8
+hide_scroll=true

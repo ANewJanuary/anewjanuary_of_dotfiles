@@ -1,0 +1,62 @@
+export ZSH="$HOME/.oh-my-zsh"
+plugins=(git laravel5 composer pip python sudo)
+
+
+ZSH_THEME="blinks"
+path+="home/artin/.config/emacs/bin"
+path+="/home/artin/.cargo/bin"
+path+="/home/linuxbrew/.linuxbrew/bin"
+export PATH=”$HOME/.emacs.d/bin:$PATH”
+export SHELL="/bin/zsh"
+
+# VARIABLES ---------------------------------------------------------
+export DOOMDIR="$HOME/.config/doom"
+export EXPLORER="ranger"
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export DOOMWADDIR="/home/artin/Games/Doom"
+export QT_STYLE_OVERRIDE="qt5ct"
+
+
+
+# EXPORTS ------------------------------------------------------------
+export VSF="/home/artin/Vshrd"
+export IBF="$VSF/IB"
+export ZEK="$IBF/ZK"
+export MUS="$VSF/music"
+export INT="$VSF/Interpretationen"
+export WLD="$VSF/Wildcard"
+export GRT="$VSF/gitreject"
+export MEM="$VSF/Mem_Capsule"
+export SHS="$VSF/shell-scripts"
+export Q11="$IBF/LP/Q1/S1"
+export Q12="$IBF/LP/Q1/S2"
+export Q21="$IBF/LP/Q2/S1"
+export Q22="$IBF/LP/Q2/S2"
+export MAC="$VSF/macros"
+export SRC="$VSF/Sources"
+export CTE="$VSF/cites"
+
+# ALIASES ------------------------------------------------------------
+alias doom='/home/artin/.config/emacs/bin/doom'
+alias rang='. ranger'
+alias dlp='yt-dlp -f "ba" -x --audio-format "mp3" --yes-playlist --add-metadata --write-info-json --windows-filenames --write-playlist-metafiles --write-thumbnail -o "%(playlist)s/%(playlist_index)s . %(title)s.%(ext)s" '
+alias setclip="xclip -selection c"
+alias getclip="xclip -selection c -o"
+alias macro="bash /home/artin/Vshrd/shell-scripts/macros.sh"
+alias cmus="cd $MUS/ && cmus"
+alias std="cd ~/stable-diffusion-webui && source venv/bin/activate && python launch.py --precision full --no-half --skip-torch-cuda-test"
+alias latex="latexmk -pvc"
+alias mupdf="setsid mupdf"
+alias vim="nvim"
+alias emacs="setsid emacs -q -l ~/.emacs.d/init.el"
+alias cbonsai="cbonsai -Sb 2 -w 1.00 -L 100 -M 15"
+alias f="cd $VSF && fzf -e"
+alias shs="bash $SHS/macros.sh"
+
+# SCRIPTS ------------------------------------------------------------
+alias lm="lualatex"
+alias lb="sh $SHS/compileWithBib.sh"
+alias GCP="git add . && git commit -m 'Generic Message Version 4' && git push"
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+
+source $ZSH/oh-my-zsh.sh

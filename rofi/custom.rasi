@@ -1,0 +1,138 @@
+* {
+    blue:  #BE6081;
+    white: #14151D90;
+    black: #BE6081;
+    grey:  #14151D90;
+
+    spacing: 2;
+    background-color: #00000000;
+    border-color: #BE6081CC;
+    anchor: north;
+    location: center;
+}
+window {
+    transparency: "screenshot";
+    background-color: #00000000;
+    border: 0;
+    padding: 0% 0% 1em 0%;
+    x-offset: 0;
+    y-offset: -10%;
+}
+mainbox {
+    padding: 0px;
+    border: 0;
+    spacing: 1%;
+}
+message {
+    border: 2px;
+    padding: 1em;
+    background-color: var(white);
+    text-color: var(black);
+}
+textbox normal {
+    text-color: #BE6081FF;
+    padding: 0;
+    border: 0;
+}
+listview {
+    fixed-height: 1;
+    border: 2px;
+    padding: 1em;
+    reverse: false;
+
+    columns: 1;
+    background-color: var(white);
+}
+element {
+    border: 0;
+    padding: 2px;
+    highlight: bold ;
+}
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+}
+element normal.normal {
+    text-color: var(blue);
+    background-color: #F5F5F500;
+}
+element normal.urgent {
+    text-color: var(blue);
+    background-color: #F5F5F500;
+}
+element normal.active {
+    text-color: var(blue);
+    background-color: #F5F5F500;
+}
+element selected.normal {
+    text-color: #F5F5F5FF;
+    background-color: #4271AE00;
+}
+element selected.urgent {
+    text-color: #F5F5F5FF;
+    background-color: #D75F00FF;
+}
+element selected.active {
+    text-color: #F5F5F5FF;
+    background-color: #005F8700;
+}
+element alternate.normal {
+    text-color: var(blue);
+    background-color: #D0D0D000;
+}
+element alternate.urgent {
+    text-color: var(blue);
+    background-color: #D0D0D000;
+}
+element alternate.active {
+    text-color: #F5F5F5FF;
+    background-color: #D0D0D000;
+}
+scrollbar {
+    border: 0;
+    padding: 0;
+    text-color: #FFFFFFFF;
+}
+inputbar {
+    spacing: 0;
+    border: 2px;
+    padding: 0.5em 1em;
+    background-color: var(grey);
+    text-color: #FFFFFFFF;
+    index: 0;
+}
+inputbar normal {
+    foreground-color: var(blue);
+    background-color: #F5F5F500;
+    text-color: #FFFFFFFF;
+}
+mode-switcher {
+    border: 2px;
+    padding: 0.5em 1em;
+    background-color: var(grey);
+    index: 10;
+}
+button selected {
+    text-color: #FFFFFFFF;
+}
+inputbar {
+    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+prompt {
+    text-color: #FFFFFFFF;
+}
+entry {
+    text-color: #FFFFFFFF;
+}
+textbox-prompt-colon {
+    expand:     false;
+    str:        ":";
+    margin:     0px 0.3em 0em 0em ;
+    text-color: var(black);
+}
+error-message {
+    border: 2px;
+    padding: 1em;
+    background-color: #FF8888;
+    text-color: var(black);
+}

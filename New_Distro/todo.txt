@@ -1,0 +1,25 @@
+Things to do in a new distro:
+- install:
+emacs gimp steam alacritty zsh variety htop dolphin thunar libreoffice
+easytag vlc syncthing zathura zathura-plugins-all mupdf ranger git
+neovim waybar rofimoji wofi hyprland hyprpaper hyprlock grim swappy
+
+texlive-scheme-full
+
+qt5ct
+kvantum
+gh
+
+flatpak
+upscayl 
+drawio
+sayonara
+keepassxc
+brave
+obs-studio
+lmms
+
+- carry over Vshrd
+- setup syncthing
+- setup omz
+- setup gh github lazygit

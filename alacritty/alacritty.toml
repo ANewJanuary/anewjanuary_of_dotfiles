@@ -1,0 +1,38 @@
+[colors.cursor]
+cursor = "CellForeground"
+text = "CellBackground"
+
+[colors.primary]
+# background = "#0C151D"
+# foreground = "#09BC8A"
+# background = "#1B1720"
+# background = "#010100"
+# foreground = "#FFFFFF"
+background = "#00191f"
+foreground = "#eee8d5"
+
+[cursor]
+style= "Underline"
+
+[window]
+opacity = 0.9
+padding.x = 10
+padding.y = 10
+
+decorations = "Full"
+decorations_theme_variant = "Dark"
+
+[terminal.shell]
+program = "/bin/zsh"
+args = [
+    "--login",
+    "-c",
+    "zsh ~/Vshrd/shell-scripts/fortune.sh; exec $SHELL"
+]
+[font]
+size = 14.0
+
+normal.family = "MesloLGS NF"
+bold.family = "MesloLGS NF"
+italic.family = "MesloLGS NF"
+bold_italic.family = "MesloLGS NF"
