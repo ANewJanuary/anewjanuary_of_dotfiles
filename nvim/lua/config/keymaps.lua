@@ -3,13 +3,13 @@ vim.keymap.set("n", "<space>oo", function()
 end, { desc = "Get Symbols Outline" })
 
 vim.keymap.set('n', '<space>fg', function()
-		vim.cmd("cd")
-		vim.cmd("Telescope live_grep")
+		vim.cmd("cd /home/artin/Vshrd")
+		vim.cmd("Telescope live_grep theme=dropdown")
 end, { desc = 'Telescope live grep' })
 
 vim.keymap.set('n', '<space>ff', function()
-		vim.cmd("cd")
-		vim.cmd("Telescope find_files")
+		vim.cmd("cd /home/artin/Vshrd")
+		vim.cmd("Telescope find_files theme=dropdown")
 end, { desc = 'Telescope fuzzy find' })
 
 vim.keymap.set('n', '<space>mp', function()
