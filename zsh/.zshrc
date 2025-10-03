@@ -42,18 +42,19 @@ alias cmus="cd $MUS/ && cmus"
 alias mupdf="setsid mupdf"
 # alias cbonsai="cbonsai -Sb 2 -w 1.00 -L 100 -M 15"
 alias cbonsai="cbonsai -b 1 -L 60"
-alias find="cd $VSF && fzf -e"
+alias goto='cd && cd $(find . -type d -print | fzf)'
 alias shs="bash $SHS/macros.sh"
 alias nvimupdate="nvim --headless '+Lazy! sync' +qa"
 alias agenda="bash /home/artin/Vshrd/shell-scripts/agenda.sh"
 alias dlink="bash /home/artin/Vshrd/shell-scripts/dlink.sh"
-alias archive="bash /home/artin/Vshrd/shell-scripts/archive.sh"
 alias journal="bash /home/artin/Vshrd/shell-scripts/journal.sh"
 alias cppath="bash /home/artin/Vshrd/shell-scripts/cppath.sh"
 alias lpc="bash /home/artin/Vshrd/shell-scripts/lppath.sh"
 alias newmac="bash /home/artin/Vshrd/shell-scripts/new_macro.sh"
 alias date="date '+%a %b %d %V %Y %H:%M'"
 alias dooit="dooit --db /home/artin/Vshrd/Vault/General/agenda.db"
+alias jlab="source /home/artin/Vshrd/Projects/004_Jupyter_Lab/jlab/bin/activate &&jupyter lab"
+alias todo="bash /home/artin/Vshrd/shell-scripts/todo.sh $VSF"
 
 # SCRIPTS ------------------------------------------------------------
 alias lm="lualatex"
@@ -65,7 +66,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Created by `pipx` on 2025-06-08 10:37:34
 export PATH="$PATH:/home/artin/.local/bin"
-
+export GOPATH="$HOME/go"
+export PATH="$PATH:$HOME/bin:$GOPATH/bin"
 # bun completions
 [ -s "/home/artin/.bun/_bun" ] && source "/home/artin/.bun/_bun"
 
