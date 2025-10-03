@@ -27,3 +27,23 @@ vim.keymap.set('n', '<space>tz', function()
 end, { desc = "Toggle ZenMode" })
 
 vim.keymap.set("i", "jk", "<ESC>")
+
+local function visual_selection_to_telescope(picker)
+  vim.cmd('normal! y')
+  local selection = vim.fn.getreg('"')
+  selection = selection:gsub('^%s+', ''):gsub('%s+$', '')
+  
+  if selection ~= '' then
+    require('telescope.builtin')[picker]({
+      default_text = selection,
+      theme = 'dropdown', 
+    })
+  end
+end
+
+vim.keymap.set('v', '<C-l>f', function() 
+  visual_selection_to_telescope('find_files') 
+end, { desc = "Search for this file name" })
+vim.keymap.set('v', '<C-l>g', function() 
+  visual_selection_to_telescope('live_grep') 
+end, { desc = "Search for this string in notes" })
