@@ -1,0 +1,9 @@
+{
+  "languageserver": {
+    "tinymist": {
+      "command": "tinymist",
+      "filetypes": ["typst"],
+      "settings": { formatterMode = "typstyle" }
+    }
+  }
+}

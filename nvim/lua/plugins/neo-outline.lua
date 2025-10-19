@@ -6,7 +6,13 @@ return {
       { desc = "Toggle Outline" })
 
     require("outline").setup {
-      -- Your setup opts here (leave empty to use defaults)
+            outline_window = {
+                position = 'left',
+                relative_width = true,
+                width = 25,
+                auto_close = false,
+                auto_jump = true
+            }
     }
   end,
 }

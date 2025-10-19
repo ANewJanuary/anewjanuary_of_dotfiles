@@ -42,8 +42,24 @@ local function visual_selection_to_telescope(picker)
 end
 
 vim.keymap.set('v', '<C-l>f', function() 
+  vim.cmd("cd ~/Vshrd/Learner-Portfolio")
   visual_selection_to_telescope('find_files') 
 end, { desc = "Search for this file name" })
 vim.keymap.set('v', '<C-l>g', function() 
+  vim.cmd("cd ~/Vshrd/Learner-Portfolio")
   visual_selection_to_telescope('live_grep') 
 end, { desc = "Search for this string in notes" })
+
+vim.keymap.set('n', '<space>tp', function()
+    vim.cmd('TypstPreviewToggle') end,
+    {desc= 'Toggle Typst Preview' })
+
+function _G.check_back_space()
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+end
+local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
+vim.keymap.set("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
+vim.keymap.set("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
+vim.keymap.set("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
+vim.keymap.set("n", "<space>f", "<Plug>(coc-format-selected)", {silent = true})

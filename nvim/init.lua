@@ -1,6 +1,5 @@
 require("config")
 require("config.lazy")
-
 -- treesitter stuff
 require("lazy").setup({
   {"nvim-treesitter/nvim-treesitter", branch = 'main', lazy = false, build = ":TSUpdate"}

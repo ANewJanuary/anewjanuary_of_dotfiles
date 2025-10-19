@@ -1,5 +1,5 @@
 vim.g.have_nerd_font = true
-vim.o.number = true
+vim.o.number = false
 vim.o.clipboard = 'unnamedplus'
 vim.o.undofile = true
 vim.o.updatetime = 250
@@ -15,6 +15,7 @@ vim.opt.expandtab = true
 
 vim.opt.mouse = "a"
 vim.opt.showmode = false
+vim.opt.ruler = false
 vim.opt.breakindent = true
 
 vim.opt.ignorecase = true
@@ -23,3 +24,6 @@ vim.opt.smartcase = true
 vim.opt.signcolumn = "yes"
 
 vim.opt.scrolloff = 10
+
+vim.opt.laststatus=0
+
