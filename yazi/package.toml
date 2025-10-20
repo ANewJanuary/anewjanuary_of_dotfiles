@@ -1,0 +1,14 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:toggle-pane"
+rev = "9a52857"
+hash = "8a7c58225816a163a6e8730c0adafbc8"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-enter"
+rev = "9a52857"
+hash = "56fdabc96fc1f4d53c96eb884b02a5be"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:dracula"
+rev = "2d73b79"
+hash = "fc6944561718351d70cffde75839211f"

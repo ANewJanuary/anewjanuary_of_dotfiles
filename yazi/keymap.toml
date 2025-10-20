@@ -1,0 +1,32 @@
+[[mgr.append_keymap]]
+on = "l"
+run = "open"
+desc = "open"
+
+[[mgr.prepend_keymap]]
+on  = "y"
+run = [ 'shell -- for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list', "yank" ]
+
+[[mgr.prepend_keymap]]
+on = "<C-y>"
+run = ["plugin system-clipboard"]
+
+[[mgr.prepend_keymap]]
+on   = "l"
+run  = "plugin smart-enter"
+desc = "Enter the child directory, or open the file"
+
+[[mgr.prepend_keymap]]
+on   = "z"
+run  = ["cd ~", "plugin fzf"]
+desc = "go to home and fuzzy"
+
+[[mgr.prepend_keymap]]
+on   = "i"
+run  = "plugin toggle-pane min-preview"
+desc = "Show or hide the preview pane"
+
+[[mgr.prepend_keymap]]
+on   = "I"
+run  = "plugin toggle-pane max-preview"
+desc = "Maximize or restore the preview pane"

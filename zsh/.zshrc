@@ -55,6 +55,7 @@ alias date="date '+%a %b %d %V %Y %H:%M'"
 alias dooit="dooit --db /home/artin/Vshrd/Vault/General/agenda.db"
 alias jlab="source /home/artin/Vshrd/Projects/004_Jupyter_Lab/jlab/bin/activate &&jupyter lab"
 alias todo="bash /home/artin/Vshrd/shell-scripts/todo.sh $VSF"
+alias twatch="setsid typst watch"
 
 # SCRIPTS ------------------------------------------------------------
 alias lm="lualatex"
@@ -74,3 +75,15 @@ export PATH="$PATH:$HOME/bin:$GOPATH/bin"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# yazi stuff
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+# zoxide shii
+eval "$(zoxide init zsh)"
