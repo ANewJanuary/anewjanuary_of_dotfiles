@@ -23,10 +23,10 @@ open = [
 	{ run = 'xdg-open "$@"', desc = "Open" },
 ]
 dis = [
-{ run = 'zathura "$@"', block = true, orphan = true, desc = "Viewer" },
+{ run = 'zathura "$@"', block = false, orphan = true, desc = "Viewer" },
 ]
 office = [
-{ run = 'libreoffice "$@"', block = true, orphan = true, desc = "Office" },
+{ run = 'libreoffice "$@"', block = false, orphan = true, desc = "Office" },
 ]
 [open]
 rules = [
