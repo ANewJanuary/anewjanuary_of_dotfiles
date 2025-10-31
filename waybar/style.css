@@ -36,7 +36,7 @@
 
 window#waybar {
     color: rgba(252, 150, 41, 1);
-    background-color: rgba(0, 16, 21, 1);
+    background-color: rgba(9,57,70,1);
 }
 
 window#waybar.solo {
@@ -101,7 +101,7 @@ window#waybar.solo {
 }
 #bluetooth {
 	padding: 0 10 0 10;
-	color: rgba(32, 68, 76, 1);
+	color: rgba(43, 144, 216,1);
 }
 
 #bluetooth.disabled {

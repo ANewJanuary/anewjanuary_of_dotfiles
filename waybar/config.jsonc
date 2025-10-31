@@ -25,7 +25,6 @@
 			"cpu",
 			"memory",
 			"temperature",
-			"backlight",
 			"battery",
 			"battery#bat2",
 			"pulseaudio",
@@ -47,7 +46,7 @@
 			"persistent-workspaces": {
 					"eDP-1": [1,2,3,4,5,6,7,8,9,10], 
 			},
-			"all-outputs": true
+			"all-outputs": false
 	},
 	"hyprland/window": {
 			"max-length": 80,
