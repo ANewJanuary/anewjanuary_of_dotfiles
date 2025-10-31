@@ -22,6 +22,6 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.signcolumn = "yes"
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 0
 vim.opt.laststatus=0
 

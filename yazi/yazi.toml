@@ -17,10 +17,13 @@ play = [
 	{ run = 'mpv "$@"', block = true, for = "unix" },
 ]
 edit = [
-	{ run = 'codium "$@"', block = false, orphan=true, for = "unix" },
+	{ run = 'codium "$@"', block = true, for = "unix" },
 ]
 open = [
 	{ run = 'xdg-open "$@"', desc = "Open" },
+]
+img = [
+{ run = 'mupdf "$@"', block = false, orphan = true, desc = "Viewer" },
 ]
 dis = [
 { run = 'zathura "$@"', block = false, orphan = true, desc = "Viewer" },
@@ -28,12 +31,16 @@ dis = [
 office = [
 { run = 'libreoffice "$@"', block = false, orphan = true, desc = "Office" },
 ]
+draw = [
+{ run = 'drawio "$@"', block = false, orphan = true, desc = "Draw" },
+]
 [open]
 rules = [
+	{ name = "*.drawio", use = "draw" },
 	{ mime = "text/*", use = "edit" },
 	{ mime = "video/*", use = "play" },
 	{ mime = "music/*", use = "play" },
-	{ mime = "image/*", use = "dis" },
+	{ mime = "image/*", use = "img" },
 	{ mime = "application/pdf", use = "dis" },
 	{ mime = "application/epub+zip", use = "dis" },
 	{ mime = "application/oasis.opendocument.graphics", use = "office" },
