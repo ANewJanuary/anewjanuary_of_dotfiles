@@ -1,0 +1,97 @@
+WingTask Configuration Instructions
+-------------------------
+
+Please follow the instructions below to configure Taskwarrior to sync
+with WingTask Taskserver.
+
+
+Dependencies
+------------
+You will need to install Taskwarrior 2.5.1 or newer.
+
+Installation options for your platform:
+
+https://taskwarrior.org/download/
+
+
+Basic Installation
+------------------
+
+An installation script is provided that will configure Taskwarrior
+for sync with WingTask server:
+
+  [1] $ chmod +x install.sh
+  [2] $ ./install.sh
+
+These command are explained below:
+
+  1. Make install script executable.
+  2. Execute install scripts.
+
+Install script will do the following:
+
+  [1] $ cp -r wingtask_certs $HOME/.wingtask_certs
+  [2] $ task config 'taskd.server' 'app.wingtask.com:53589'
+  [3] $ task config 'taskd.key' '~/.wingtask_certs/artin2007majidi@gmail.com.key.pem'
+  [4] $ task config 'taskd.ca'  '~/.wingtask_certs/letsencrypt_root_cert.pem'
+  [5] $ task config 'taskd.certificate' '~/.wingtask_certs/artin2007majidi@gmail.com.cert.pem'
+  [6] $ task config 'taskd.credentials' 'WingTask/artin2007majidi@gmail.com/5cfe22f3-dd9c-4d59-876f-21d43ed011e5'
+
+
+These commands are explained below:
+
+  1. Backup .taskrc
+
+  2. Copy wingtask cert files to a hidden directory in user $HOME
+
+  3. Invoke task config to set taskd.server
+
+  4. Invoke task config to set taskd.key to key generated for user.
+
+  5. Invoke task config to set taskd.ca to intermediate root certificate
+
+  6. Invoke task config to set taskd.certificate to cert generated for user.
+
+  7. Invoke task config to set 'taskd.credentials' with server identity for user.
+
+
+"sync" command
+--------------
+
+After install script is invoked taskwarrior is configured to sync local
+task data up to WingTask servers:
+
+NOTE: Install script does not execute sync and this command must be done
+manually.
+
+There are two sync commands:
+
+  [1] $ task sync init
+  [2] $ task sync
+
+  1. task sync init is for first time sync only.
+  2. task sync is for all subsequent sync.
+
+Troubleshooting
+---------------
+Taskwarrior provides a doc for troubleshooting common issues with
+sync:
+
+https://taskwarrior.org/docs/taskserver/troubleshooting-sync.html
+
+Two particular commands are handy for diagnosing problems:
+
+  $ task diagnostics
+
+  Has a section showing the configuration of Taskwarrior. Should
+  include all of the configuration set in the install script.
+
+  $ task rc.debug=1 rc.debug.tls=2 sync
+
+  This is the sync command run in verbal debug mode.
+
+I can provide additonal help, please email me:
+
+tim@wingtask.com
+
+---
