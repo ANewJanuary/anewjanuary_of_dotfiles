@@ -11,7 +11,6 @@ return {
       "script",
       "math",
       "font",
-      "delim",
       "phy",
     },
     ft = { "*.tex", "*.md", "*.typ" },

@@ -1,0 +1,22 @@
+layout  {
+ 	tab name="tasks" cwd="/home/artin/Vshrd/" {
+		pane command="taskwarrior-tui"
+
+    	pane size=1 borderless=true {
+        	plugin location="zellij:compact-bar"
+    	}
+	}
+	tab name="journal" cwd="/home/artin/Vshrd/Vault/Index/journal/"
+	{
+    	pane split_direction="vertical" {
+
+        	pane size="25%" command="cbonsai"
+
+        	pane size="75%"
+    	}
+
+    	pane size=1 borderless=true {
+        	plugin location="zellij:compact-bar"
+    	}
+	}
+}

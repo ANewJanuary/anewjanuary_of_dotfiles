@@ -1,7 +1,6 @@
-set selection-clipboard clipboard
 set recolor
 set recolor-keephue
-set default-bg rgba(0,25,31,0.95)
-set default-fg rgba(150,150,100,1)
-set recolor-lightcolor rgba(0,0,0,0)
-set recolor-darkcolor rgba(150,150,130,1)
+set default-bg rgba(05,07,05,0.9)
+set default-fg rgba(251,251,251,1)
+set recolor-lightcolor rgba(05,07,05,0)
+set recolor-darkcolor rgba(251,251,251,1)

@@ -1,0 +1,39 @@
+[language-server.ltex-ls]
+command = "ltex-ls"
+diagnostic-severity = "info"
+
+[language-server.ltex-ls.config]
+language = "auto"
+enabled = ["en-US", "de-DE"]
+# enabled = ["en-US", "de-DE", "fr-FR"]
+
+[language-server.codebook]
+command = "codebook-lsp"
+args = ["serve"]
+
+[language-server.markdown-oxide]
+command = "markdown-oxide"
+
+[[language]]
+name = "typst"
+scope = "source.typ"
+file-types = ["typ"]
+language-servers = ["tinymist", "codebook"]
+
+[[language]]
+name = "markdown"
+scope = "source.md"
+file-types = ["md"]
+language-servers = ["codebook", "markdown-oxide"]
+
+[[language]]
+name = "tex"
+scope = "source.tex"
+file-types = ["tex"]
+language-servers = ["texlab", "codebook"]
+
+[[language]]
+name = "org"
+scope = "source.org"
+file-types = ["org"]
+language-servers = ["codebook"]

@@ -17,7 +17,7 @@ play = [
 	{ run = 'mpv "$@"', block = true, for = "unix" },
 ]
 edit = [
-	{ run = 'codium "$@"', block = true, for = "unix" },
+	{ run = 'hx "$@"', block = true, for = "unix" },
 ]
 open = [
 	{ run = 'xdg-open "$@"', desc = "Open" },

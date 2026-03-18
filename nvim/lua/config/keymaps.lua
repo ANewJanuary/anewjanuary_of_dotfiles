@@ -1,68 +1,59 @@
-vim.keymap.set("n", "<space>oo", function()
-		vim.cmd("SymbolsOutline")
-end, { desc = "Get Symbols Outline" })
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
 
-vim.keymap.set('n', '<space>fg', function()
-		vim.cmd("cd /home/artin/Vshrd")
-		vim.cmd("Telescope live_grep theme=dropdown")
-end, { desc = 'Telescope live grep' })
+vim.keymap.del("n", "<leader>n")
 
-vim.keymap.set('n', '<space>fb', function()
-		vim.cmd("cd /home/artin/Vshrd")
-		vim.cmd("Telescope buffers")
-end, { desc = 'Telescope buffers' })
+vim.keymap.set("n", "<leader>hn", function()
+  Snacks.picker.notifications()
+end, { desc = "Notification History" })
 
-vim.keymap.set('n', '<space>ff', function()
-		vim.cmd("cd /home/artin/Vshrd")
-		vim.cmd("Telescope find_files theme=dropdown")
-end, { desc = 'Telescope fuzzy find' })
-
-vim.keymap.set('n', '<space>pm', function()
-		vim.cmd("cd ~/Vshrd/Learner-Portfolio")
-		vim.cmd("MarkdownPreview toggle")
-end, { desc = 'Live Preview start' })
-
-vim.keymap.set('n', '<space>tz', function()
-				vim.cmd("ZenMode")
-end, { desc = "Toggle ZenMode" })
+vim.keymap.set("n", "<leader>fd", function()
+  vim.cmd("lua Snacks.dashboard()")
+end, { desc = "Go to Dashboard" })
 
 vim.keymap.set("i", "jk", "<ESC>")
+vim.keymap.set("n", "<M-q>", "gwip")
+vim.keymap.set("i", "<M-q>", "<ESC>gwipA")
 
-local function visual_selection_to_telescope(picker)
-  vim.cmd('normal! y')
-  local selection = vim.fn.getreg('"')
-  selection = selection:gsub('^%s+', ''):gsub('%s+$', '')
-  
-  if selection ~= '' then
-    require('telescope.builtin')[picker]({
-      default_text = selection,
-      theme = 'dropdown', 
-    })
-  end
-end
+vim.keymap.set("n", "<leader>tmo", function()
+  vim.cmd("PeekOpen")
+end, { desc = "Open Peek" })
 
+vim.keymap.set("n", "<leader>tmc", function()
+  vim.cmd("PeekClose")
+end, { desc = "Close Peek" })
 
-vim.keymap.set('v', '<C-l>f', function() 
-  vim.cmd("cd ~/Vshrd/Learner-Portfolio")
-  visual_selection_to_telescope('find_files') 
-end, { desc = "Search for this file name" })
-vim.keymap.set('v', '<C-l>g', function() 
-  vim.cmd("cd ~/Vshrd/Learner-Portfolio")
-  visual_selection_to_telescope('live_grep') 
-end, { desc = "Search for this string in notes" })
+vim.keymap.set("n", "<leader>tp", function()
+  vim.cmd("TypstPreviewToggle")
+end, { desc = "Toggle Typst Preview" })
 
-vim.keymap.set('n', '<space>tp', function()
-    vim.cmd('TypstPreviewToggle') end,
-    {desc= 'Toggle Typst Preview' })
+-- ZK-NVIM SECTION
 
-function _G.check_back_space()
-    local col = vim.fn.col('.') - 1
-    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
-end
-local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
-vim.keymap.set("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
-vim.keymap.set("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
-vim.keymap.set("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
-vim.keymap.set("n", "<space>f", "<Plug>(coc-format-selected)", {silent = true})
+vim.keymap.set("n", "<leader>nss", function()
+  vim.cmd("ZkNotes")
+end, { desc = "ZK Search Notes by Title" })
 
+vim.keymap.set("n", "<leader>nst", function()
+  vim.cmd("ZkTags")
+end, { desc = "ZK Search Notes by Tag" })
 
+vim.keymap.set("n", "<leader>nb", function()
+  vim.cmd("ZkBuffers")
+end, { desc = "List all ZK buffers" })
+
+vim.keymap.set("n", "<leader>nlb", function()
+  vim.cmd("ZkBacklinks")
+end, { desc = "List all backlinks for this note" })
+
+vim.keymap.set("n", "<leader>nll", function()
+  vim.cmd("ZkLinks")
+end, { desc = "List all links in this note" })
+
+vim.keymap.set("n", "<leader>ni", function()
+  vim.cmd("ZkInsertLink")
+end, { desc = "Insert a new Link at Cursor" })
+
+vim.keymap.set("n", "<leader>nn", function()
+  vim.cmd("ZkNew")
+end, { desc = "New ZK Note" })

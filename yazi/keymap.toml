@@ -16,10 +16,15 @@ on   = "l"
 run  = "plugin smart-enter"
 desc = "Enter the child directory, or open the file"
 
-[[mgr.prepend_keymap]]
-on   = "z"
-run  = ["cd ~", "plugin fzf"]
-desc = "go to home and fuzzy"
+[[mgr.append_keymap]]
+on = "<C-h>"
+run = "cd ~"
+desc = "go to home"
+
+# [[mgr.prepend_keymap]]
+# on   = "z"
+# run  = ["cd ~", "plugin fzf"]
+# desc = "go to home and fuzzy"
 
 [[mgr.prepend_keymap]]
 on   = "i"

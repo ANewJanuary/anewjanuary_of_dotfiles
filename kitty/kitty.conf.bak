@@ -1,0 +1,36 @@
+font_size 18
+cursor #f23749
+cursor_shape beam
+cursor_shape_unfocused hollow
+cursor_trail 0
+scrollbar never
+
+mouse_hide_wait 0.2
+url_color #0087bd
+url_style curly
+open_url_with firefox
+detect_urls yes
+repaint_delay 5
+sync_to_monitor no
+input_delay 1
+
+initial_window_width  640
+initial_window_height 400
+placement_strategy center
+confirm_os_window_close 0
+window_padding_width 5 5 5 20
+
+foreground #f1e9d2 
+background #002d38
+background_opacity 0.95
+
+editor nvim
+shell /bin/zsh
+
+
+# BEGIN_KITTY_FONTS
+font_family      family='Cascadia Mono NF' style=Light
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+# END_KITTY_FONTS

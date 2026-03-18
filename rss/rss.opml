@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>My RSS Feeds</title>
+    <dateCreated>2023-10-15T12:00:00Z</dateCreated>
+  </head>
+  <body>
+    <outline text="politics" title="politics">
+      <outline text="Süddeutsche Zeitung" title="Süddeutsche Zeitung" type="rss" xmlUrl="https://www.sueddeutsche.de/politik/rss.xml"/>
+      <outline text="ARD" title="ARD" type="rss" xmlUrl="https://www.ard.de/rss"/>
+      <outline text="Jacobin" title="Jacobin" type="rss" xmlUrl="https://jacobin.com/feed/"/>
+    </outline>
+    <outline text="gaming" title="gaming">
+      <outline text="PC Gamer" title="PC Gamer" type="rss" xmlUrl="https://www.pcgamer.com/feed/"/>
+      <outline text="Into Indie Games" title="Into Indie Games" type="rss" xmlUrl="https://www.intoindiegames.com/feed/"/>
+      <outline text="Gaming on Linux" title="Gaming on Linux" type="rss" xmlUrl="https://gamingonlinux.com/rss.xml"/>
+      <outline text="Niche Gamer" title="Niche Gamer" type="rss" xmlUrl="https://nichegamer.com/feed/"/>
+      <outline text="PCGamesN" title="PCGamesN" type="rss" xmlUrl="https://www.pcgamesn.com/feed/"/>
+    </outline>
+    <outline text="linux" title="linux">
+      <outline text="It's FOSS" title="It's FOSS" type="rss" xmlUrl="https://itsfoss.com/feed/"/>
+      <outline text="Slashdot" title="Slashdot" type="rss" xmlUrl="https://slashdot.org/index.rss"/>
+      <outline text="Pixelated Dwarf" title="Pixelated Dwarf" type="rss" xmlUrl="https://pixelateddwarf.com/feed/"/>
+      <outline text="Blackmore Ops" title="Blackmore Ops" type="rss" xmlUrl="https://blackmoreops.com/feed/"/>
+    </outline>
+    <outline text="music" title="music">
+      <outline text="Stereo Stickman" title="Stereo Stickman" type="rss" xmlUrl="https://stereostickman.com/feed/"/>
+      <outline text="IndiePulse" title="IndiePulse" type="rss" xmlUrl="https://indiepulse.com/feed/"/>
+      <outline text="Heavy Blog Is Heavy" title="Heavy Blog Is Heavy" type="rss" xmlUrl="https://heavyblogisseh.com/feed/"/>
+      <outline text="Progsphere" title="Progsphere" type="rss" xmlUrl="https://progsphere.com/feed/"/>
+      <outline text="Side-Line Music" title="Side-Line Music" type="rss" xmlUrl="https://www.side-linemusic.com/feed/"/>
+      <outline text="ElektroSpank" title="ElektroSpank" type="rss" xmlUrl="https://elektrospank.com/feed/"/>
+    </outline>
+  </body>
+</opml>
