@@ -1,8 +1,8 @@
-Things to do in a new distro:
+# Things to do in a new distro:
+
 - install:
-emacs gimp steam alacritty zsh variety htop dolphin thunar libreoffice
-easytag vlc syncthing zathura zathura-plugins-all mupdf ranger git
-neovim waybar rofimoji wofi hyprland hyprpaper hyprlock grim swappy
+gimp steam kitty fish variety bottom easytag kid3 syncthing zathura zathura-plugins mupdf yazi git
+helix waybar rofimoji fuzzel hyprland hyprpaper hyprlock grim swappy taskbook-sh glazepkg
 
 texlive-scheme-full
 
@@ -10,8 +10,8 @@ qt5ct
 kvantum
 gh
 
-flatpak
-upscayl 
+- flatpaks:
+upscayl
 drawio
 sayonara
 keepassxc
@@ -21,5 +21,4 @@ lmms
 
 - carry over Vshrd
 - setup syncthing
-- setup omz
 - setup gh github lazygit

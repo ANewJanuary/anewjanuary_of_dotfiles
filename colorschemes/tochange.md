@@ -1,21 +1,19 @@
 # Things to change when changing color schemes
 
-1. "yazi/theme.toml"; Possibly add flavour: `ya pack -a kmlupreti/ayu-dark`
++ "yazi/theme.toml"
 
-2. "kitty/kitty.conf"
++ "kitty/kitty.conf"
 
-3. "nvim/init.lua"
++ "nvim/init.lua"
 
-4. "waybar.css"
++ "waybar.css"
 
-5. firefox readers and firefox theme
++ firefox readers and firefox theme
 
-6. taskrc
++ taskbook
 
-7. wofi
++ fuzzel
 
-8. alacritty for legacy shell-scripts
++ Zathura
 
-9. Zathura for the viewer.
-
-10. Hyprlock theming for lock screen.
++ Hyprlock

@@ -1,6 +1,7 @@
 keybinds clear-defaults=true {
     locked {
         bind "Ctrl space" { SwitchToMode "normal"; }
+        bind "Alt t" { NewTab; SwitchToMode "locked"; }
         bind "Alt 1" { GoToTab 1; SwitchToMode "locked"; }
         bind "Alt 2" { GoToTab 2; SwitchToMode "locked"; }
         bind "Alt 3" { GoToTab 3; SwitchToMode "locked"; }
@@ -10,7 +11,6 @@ keybinds clear-defaults=true {
         bind "Alt 7" { GoToTab 7; SwitchToMode "locked"; }
         bind "Alt 8" { GoToTab 8; SwitchToMode "locked"; }
         bind "Alt 9" { GoToTab 9; SwitchToMode "locked"; }
-        bind "Alt t" { NewTab; SwitchToMode "locked"; }
         bind "Ctrl h" { MoveFocus "left"; SwitchToMode "locked"; }
         bind "Ctrl l" { MoveFocus "right"; SwitchToMode "locked";}
     }
@@ -62,7 +62,6 @@ keybinds clear-defaults=true {
         bind "9" { GoToTab 9; SwitchToMode "locked"; }
         bind "Shift h" { BreakPaneLeft; SwitchToMode "locked"; }
         bind "Shift l" { BreakPaneRight; SwitchToMode "locked"; }
-        bind "n" { NewTab; SwitchToMode "locked"; }
         bind "r" { SwitchToMode "renametab"; TabNameInput 0; }
         bind "s" { ToggleActiveSyncTab; SwitchToMode "locked"; }
         bind "x" { CloseTab; SwitchToMode "locked"; }
@@ -195,7 +194,8 @@ web_client {
     font "monospace"
 }
 
-theme "molokai-dark"
+// theme "molokai-dark"
+theme "marathon"
 
 // Choose the path to the default shell that zellij will use for opening new panes
 default_shell "fish"
@@ -207,7 +207,7 @@ default_layout "def0"
 layout_dir "/home/artin/.config/zellij/layouts/"
 
 // The folder in which Zellij will look for themes
-// theme_dir "/home/artin/Vshrd/config/zellij/themes/"
+theme_dir "/home/artin/Vshrd/config/zellij/themes/"
 
 // Toggle enabling the mouse mode.
 mouse_mode true

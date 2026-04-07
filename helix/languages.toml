@@ -4,8 +4,7 @@ diagnostic-severity = "info"
 
 [language-server.ltex-ls.config]
 language = "auto"
-enabled = ["en-US", "de-DE"]
-# enabled = ["en-US", "de-DE", "fr-FR"]
+enabled = ["en-US", "de-DE", "fr-FR"]
 
 [language-server.codebook]
 command = "codebook-lsp"
@@ -21,16 +20,22 @@ file-types = ["typ"]
 language-servers = ["tinymist", "codebook"]
 
 [[language]]
+name = "markdown-manifest"
+scope = "source.md"
+file-types = [{ glob = "*manifest.md" }]
+
+[[language]]
 name = "markdown"
 scope = "source.md"
+comment-tokens = ["-", "+", "*", "- [ ]", ">"]
 file-types = ["md"]
 language-servers = ["codebook", "markdown-oxide"]
 
-[[language]]
-name = "tex"
-scope = "source.tex"
-file-types = ["tex"]
-language-servers = ["texlab", "codebook"]
+# [[language]]
+# name = "tex"
+# scope = "source.tex"
+# file-types = ["tex"]
+# language-servers = ["texlab", "codebook"]
 
 [[language]]
 name = "org"

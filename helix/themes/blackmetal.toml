@@ -1,2 +1,9 @@
 inherits = "ayu_evolve"
 "ui.background" = { fg = "foreground" }
+
+
+[palette]
+bg_primary = "#100F0F"
+bg_secondary = "#ffffff"
+fg_primary = "#D1E3DD"
+fg_secondary = "#D4FF00"

@@ -13,6 +13,12 @@ max_width = 2000
 max_height = 2000
 
 [opener]
+xopp = [
+	{ run = 'xournalpp "$@"', block = false, orphan = true, for = "unix", desc = "Xournalpp" },
+]
+rnote = [
+	{ run = 'rnote "$@"', block = false, orphan = true, for = "unix", desc = "Rnote" },
+]
 play = [
 	{ run = 'mpv "$@"', block = true, for = "unix" },
 ]
@@ -36,6 +42,8 @@ draw = [
 ]
 [open]
 rules = [
+	{ name = "*.rnote", use = "rnote" },
+	{ name = "*.xopp", use = "xopp" },
 	{ name = "*.drawio", use = "draw" },
 	{ mime = "text/*", use = "edit" },
 	{ mime = "video/*", use = "play" },

@@ -22,7 +22,7 @@ function fish_prompt
     set -l yellow (set_color yellow)
     set -l red (set_color red)
     set -l blue (set_color blue)
-    set -l green (set_color green)
+    set -l green (set_color "#D4FF00")
     set -l normal (set_color normal)
     set -l magenta (set_color magenta)
 
@@ -50,9 +50,9 @@ function fish_prompt
 
     set -l prompt_color $red
     if test $last_status = 0
-        set prompt_color $magenta
+        set prompt_color $green
     end
 
     # Terminate with a nice prompt char
-    echo -e -n -s $prompt_color ' λ ' $magenta
+    echo -e -n -s $prompt_color ' λ ' $green
 end

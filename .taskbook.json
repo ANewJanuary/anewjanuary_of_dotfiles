@@ -1,0 +1,48 @@
+{
+  "taskbookDirectory": "/home/artin/Vshrd/Vault/Agenda/",
+  "displayCompleteTasks": true,
+  "displayProgressOverview": true,
+  "theme": {
+    "muted": {
+      "r": 140,
+      "g": 140,
+      "b": 140
+    },
+    "success": {
+      "r": 212,
+      "g": 255,
+      "b": 0
+    },
+    "warning": {
+      "r": 235,
+      "g": 117,
+      "b": 18
+    },
+    "error": {
+      "r": 252,
+      "g": 4,
+      "b": 52
+    },
+    "info": {
+      "r": 212,
+      "g": 255,
+      "b": 0
+    },
+    "pending": {
+      "r": 216,
+      "g": 180,
+      "b": 254
+    },
+    "starred": {
+      "r": 253,
+      "g": 224,
+      "b": 71
+    }
+  },
+  "sync": {
+    "enabled": false,
+    "serverUrl": "http://localhost:8080"
+  },
+  "sortMethod": "id",
+  "defaultView": "board"
+}

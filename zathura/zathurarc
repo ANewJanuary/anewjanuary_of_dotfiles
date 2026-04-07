@@ -1,6 +1,6 @@
 set recolor
 set recolor-keephue
-set default-bg rgba(05,07,05,0.9)
-set default-fg rgba(251,251,251,1)
-set recolor-lightcolor rgba(05,07,05,0)
-set recolor-darkcolor rgba(251,251,251,1)
+set default-bg rgba(1,2,0,0.9)
+set default-fg rgba(206,205,195,1)
+set recolor-lightcolor rgba(1,2,0,0.9)
+set recolor-darkcolor rgba(206,205,195,1)

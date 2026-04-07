@@ -1,6 +1,6 @@
 ### Editor Config ###
 
-theme = "blackmetal"
+theme = "marathon"
 
 [editor]
 line-number = "relative"
@@ -15,12 +15,14 @@ trim-final-newlines = true
 trim-trailing-whitespace = true
 popup-border = "all"
 clipboard-provider = "wayland"
-rulers = [0, 70]
+auto-format = false
+gutters = ["diagnostics", "spacer","diff"]
+# rulers = [0, 70]
 
 [editor.statusline]
-left = ["position", "position-percentage","spinner"]
-center = ["version-control"]
-right = ["diagnostics", "file-name", "file-type"]
+left = [] # ["position", "spinner"]
+center = [] # ["version-control"]
+right = [] # ["diagnostics", "file-name"]
 separator = "|"
 mode.normal = "NORMAL"
 mode.insert = "INSERT"
@@ -59,19 +61,27 @@ C-e = [
   ':redraw',
 ]
 
+C-g = [
+    ":write-all",
+    ":insert-output lazygit >/dev/tty",
+    ":redraw",
+    ":reload-all"
+]
+
 [keys.normal.g]
 a = "code_action"
-
-[keys.select]
-tab = "extend_parent_node_end"
-S-tab = "extend_parent_node_start"
 
 [keys.normal.space]
 q = ":buffer-close"
 A = ":lsp-workspace-command"
 Z = ":set gutters.line-numbers.min-width 3"
 z = ":set gutters.line-numbers.min-width 37"
-tab = ":echo %sh{wc -w %{buffer_name}}"
+tab = ":echo %sh{wc -lw %{buffer_name}} | %{cursor_line} : %{cursor_column} | %{language}"
+
+[keys.select]
+tab = "extend_parent_node_end"
+S-tab = "extend_parent_node_start"
+
 
 [keys.insert]
 S-tab = "move_parent_node_start"
