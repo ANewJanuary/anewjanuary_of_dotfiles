@@ -1,0 +1,17 @@
+
+output "eDP-1" {
+  mode "1920x1200@120.000"
+  scale 1
+  transform "normal"
+
+  // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
+  // so to put another output directly adjacent to it on the right, set its x to 1920.
+  position x=0 y=0
+}
+
+output "PNP(AOC) Q27G2G4 0x00000920" {
+  mode "2560x1440@143.912"
+  scale 1.1
+  position x=0 y=0
+}
+

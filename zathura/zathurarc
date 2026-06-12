@@ -1,6 +1,8 @@
 set recolor
 set recolor-keephue
-set default-bg rgba(1,2,0,0.9)
-set default-fg rgba(206,205,195,1)
-set recolor-lightcolor rgba(1,2,0,0.9)
-set recolor-darkcolor rgba(206,205,195,1)
+set default-bg "#020000"
+set default-fg "#c1c1c1"
+set inputbar-bg "#020000"
+set statusbar-bg "#020000"
+set recolor-lightcolor "#020000"
+set recolor-darkcolor "#c1c1c1"

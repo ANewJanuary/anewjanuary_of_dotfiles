@@ -14,7 +14,6 @@ set fish_greeting
 function fish_mode_prompt
 end
 
-fish_config theme choose flexoki-light
 
 # Enable vi mode
 
@@ -70,9 +69,11 @@ alias ld 'eza -1 -l -F --icons=always -b --no-permissions --no-time --no-user --
 alias zel "zellij attach -c def1"
 alias za "setsid zathura"
 alias rnote "setsid rnote"
-alias drawio "cd /home/artin/clones/drawio-desktop/ && setsid npm start && cd"
+alias twfe "$HOME/clones/2048/2048"
+alias wallbg "$HOME/Vshrd/shell-scripts/wallbg.sh"
+alias siv "$HOME/Vshrd/shell-scripts/svginvert.sh"
 
-export FZF_DEFAULT_OPTS="--style=minimal --layout=reverse --height=40% --color='current-bg:#D4FF00,current-fg:#010200'"
+export FZF_DEFAULT_OPTS="--style=minimal --layout=reverse --height=40% --color='current-bg:#4c566a,current-fg:#f5f5f5'"
 export EDITOR="hx"
 
 ### FUNCTIONS ###
@@ -81,6 +82,11 @@ set ZELLIJ_CONFIG_DIR "/home/artin/.config/zellij/"
 set ZELLIJ_DISABLE_KITTY_KEYBOARD 1
 
 # fzf
+set -x FZF_DEFAULT_OPTS "$FZF_DEFAULT_OPTS
+--color=fg:#c1c1c1,bg:#020000,hl:#974b46,gutter:#020000
+--color=fg+:#c1c1c1,bg+:#000000,hl+:#974b46
+--color=info:#505050,prompt:#974b46,pointer:#974b46
+--color=marker:#999999,spinner:#999999,header:#999999"
 set -gx FZF_DEFAULT_COMMAND "fd \
     --type f --hidden --no-follow \
     --exclude .git \
@@ -101,6 +107,14 @@ function goto
     cd && cd (find . -type d -print | fzf)
 end
 
+# restart stuff
+function restartaudio
+    systemctl --user restart pipewire.service pipewire.socket pipewire-pulse.service pipewire-pulse.socket
+end
+
+function restartwifi
+   bash $HOME/Vshrd/shell-scripts/restart_wifi.sh
+end
 # ssh agent
 function start_ssh_agent
     eval (ssh-agent -c)
@@ -112,7 +126,12 @@ end
 
 # timer using dunst
 function timer
-    bash ~/Vshrd/shell-scripts/timer.sh
+    bash ~/Vshrd/shell-scripts/timer.sh $argv
+end
+
+# templates function
+function template
+  bash ~/Vshrd/shell-scripts/templates.sh
 end
 
 # jlab function
@@ -121,6 +140,10 @@ function jlab
     and jupyter lab
 end
 
+# diskey
+function diskey
+    sudo bash  ~/Vshrd/shell-scripts/diskey.sh
+end
 # yazi function (ported from zsh)
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
@@ -130,3 +153,59 @@ function y
     end
     rm -f -- "$tmp"
 end
+
+### COLOR SCHEME
+# name: KHOLD colors for Fish
+# url: https://fishshell.com/docs/current/index.html
+# upstream: ${upstream}
+# author: Andrea Schiavini (original code by Casey Miller)
+
+# use in ~/.config/fish/conf.d/
+
+# preferred bg: 000000
+# alt background: 39121b
+
+### Full palette. 
+### Colors defined in neomdern/palette/KHOLD.lua
+set -g alt 5f8787 
+set -g constant aaaaaa 
+set -g comment 505050 
+set -g fg c1c1c1 
+set -g func 888888 
+set -g keyword 999999 
+set -g number aaaaaa 
+set -g operator 9b99a3 
+set -g property c1c1c1 
+set -g str eceee3 
+set -g type 974b46 
+
+# Syntax Highlighting Colors
+set -g fish_color_normal c1c1c1
+set -g fish_color_command 888888
+set -g fish_color_keyword 999999
+set -g fish_color_quote eceee3
+set -g fish_color_redirection aaaaaa
+set -g fish_color_end 9b99a3
+set -g fish_color_error 5f8787
+set -g fish_color_param c1c1c1
+set -g fish_color_valid_path 974b46
+set -g fish_color_option 5f8787
+set -g fish_color_comment 505050
+set -g fish_color_selection --background=000000
+set -g fish_color_operator 9b99a3
+set -g fish_color_escape 999999
+set -g fish_color_autosuggestion 505050
+set -g fish_color_cwd eceee3
+set -g fish_color_hostname aaaaaa
+set -g fish_color_status 5f8787
+set -g fish_color_cancel aaaaaa
+set -g fish_color_search_match --background=000000
+
+# Completion Pager Colors
+set -g fish_pager_color_progress 5f8787
+set -g fish_pager_color_prefix 974b46
+set -g fish_pager_color_completion c1c1c1
+set -g fish_pager_color_description 505050
+set -g fish_pager_color_selected_prefix 5f8787
+set -g fish_pager_color_selected_completion 5f8787
+set -g fish_pager_color_selected_background --background=000000

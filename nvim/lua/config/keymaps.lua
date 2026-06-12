@@ -1,59 +1,100 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
+local map = vim.keymap.set
+map('i', 'jk', '<Esc>')
+-- Telescope stuff
+map('n', '<Leader>fr', ':Telescope oldfiles<CR>',
+  { desc = "Find Recent" })
+map("n", "<leader>ff", "<cmd>Telescope find_files<cr>",
+  { desc = "Find files" })
+map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>",
+  { desc = "Live grep" })
+map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>",
+  { desc = "Help tags" })
+map("n", "<leader>fk", "<cmd>Telescope keymaps<cr>",
+  { desc = "Keymaps" })
+map("n", "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>",
+  { desc = "Find Symbols in Document" })
+map("n", "<leader>fS", "<cmd>Telescope lsp_workspace_symbols<cr>",
+  { desc = "Find Symbols in Workspace" })
+map('n', '<leader>tp', function()
+  local root = vim.fs.root(0, { 'typst.toml', '.git' })
+  if root then
+    vim.lsp.buf.execute_command({
+      command = 'tinymist.pinMain',
+      arguments = { root .. '/master.typ' },
+    })
+  end
+end, { desc = 'Tinymist: pin main to master.typ' })
+-- Shortcuts and stuff
+map("n", "<A-q>", "gwip", { desc = "wrap text" })
+map("i", "<A-q>", "<Esc>gwipi", { desc = "wrap text" })
+map("i", "<A-a>", "<Esc><<i", { desc = "Demote" })
+map("i", "<A-d>", "<Esc>>>i", { desc = "Promote" })
+map({"n","v"}, "<A-a>", "<<<Esc>", { desc = "Demote" })
+map({"n","v"}, "<A-d>", ">><Esc>", { desc = "Promote" })
 
-vim.keymap.del("n", "<leader>n")
+-- Buffer Management
 
-vim.keymap.set("n", "<leader>hn", function()
-  Snacks.picker.notifications()
-end, { desc = "Notification History" })
+-- ctrl
+map("n", "<C-b>", "<cmd>b#<cr>", { desc = "Next buffer" })
 
-vim.keymap.set("n", "<leader>fd", function()
-  vim.cmd("lua Snacks.dashboard()")
-end, { desc = "Go to Dashboard" })
+-- leaders
+map("n", "<leader>bb", "<cmd>Telescope buffers<cr>", { desc = "Buffers" })
+map("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Buffer delete" })
 
-vim.keymap.set("i", "jk", "<ESC>")
-vim.keymap.set("n", "<M-q>", "gwip")
-vim.keymap.set("i", "<M-q>", "<ESC>gwipA")
+-- session management
+map("n", "<leader>ss", "<cmd>mksession! ~/Vshrd/config/nvim/session.vim<cr>", { desc = "Save Session" })
+map("n", "<leader>sl", "<cmd>source ~/Vshrd/config/nvim/session.vim<cr>", { desc = "Load Session" })
 
-vim.keymap.set("n", "<leader>tmo", function()
-  vim.cmd("PeekOpen")
-end, { desc = "Open Peek" })
+-- Window Management
+-- split
+map("n", "<leader>wv", "<cmd>vsplit<cr>", { desc = "Vertical split" })
+map("n", "<leader>ws", "<cmd>split<cr>", { desc = "Horizontal split" })
+map("n", "<leader>wd", "<cmd>close<cr>", { desc = "Close window" })
 
-vim.keymap.set("n", "<leader>tmc", function()
-  vim.cmd("PeekClose")
-end, { desc = "Close Peek" })
+-- Org
+map("n", "<leader>aa", "<cmd>OrgAgenda<cr>", { desc = "Org agenda" })
+map("n", "<leader>oc", "<cmd>OrgCapture<cr>", { desc = "Org capture" })
 
-vim.keymap.set("n", "<leader>tp", function()
-  vim.cmd("TypstPreviewToggle")
-end, { desc = "Toggle Typst Preview" })
-
--- ZK-NVIM SECTION
-
-vim.keymap.set("n", "<leader>nss", function()
-  vim.cmd("ZkNotes")
-end, { desc = "ZK Search Notes by Title" })
-
-vim.keymap.set("n", "<leader>nst", function()
-  vim.cmd("ZkTags")
-end, { desc = "ZK Search Notes by Tag" })
-
-vim.keymap.set("n", "<leader>nb", function()
-  vim.cmd("ZkBuffers")
-end, { desc = "List all ZK buffers" })
-
-vim.keymap.set("n", "<leader>nlb", function()
-  vim.cmd("ZkBacklinks")
-end, { desc = "List all backlinks for this note" })
-
-vim.keymap.set("n", "<leader>nll", function()
-  vim.cmd("ZkLinks")
-end, { desc = "List all links in this note" })
-
-vim.keymap.set("n", "<leader>ni", function()
-  vim.cmd("ZkInsertLink")
-end, { desc = "Insert a new Link at Cursor" })
-
-vim.keymap.set("n", "<leader>nn", function()
-  vim.cmd("ZkNew")
-end, { desc = "New ZK Note" })
+-- CUSTOM FUNCTIONS --
+-- insert image
+vim.keymap.set("n", "<leader>ip", "<cmd>PasteImage<cr>",
+  { desc = "Paste image as Typst figure" })
+-- toggle list or convert
+function toggle_bullet_list(bullet_char)
+    bullet_char = bullet_char or '-'
+    local start_line, end_line
+    local mode = vim.api.nvim_get_mode().mode
+    local was_visual = (mode == 'v' or mode == 'V' or mode == '\22')
+    if was_visual then
+        local pos1 = vim.fn.getpos("v")
+        local pos2 = vim.fn.getpos(".")
+        start_line = math.min(pos1[2], pos2[2])
+        end_line = math.max(pos1[2], pos2[2])
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), 'n', true)
+    else
+        start_line = vim.api.nvim_win_get_cursor(0)[1]
+        end_line = start_line
+    end
+    local original_cursor = vim.api.nvim_win_get_cursor(0)
+    local bullet_pattern = "^(%s*)[-*+]%s"
+    for line_num = start_line, end_line do
+        local line = vim.api.nvim_buf_get_lines(0, line_num - 1, line_num, false)[1]
+        if line then
+            local indent = line:match(bullet_pattern)
+            if indent then
+                line = line:gsub(bullet_pattern, "%1")
+            else
+                local current_indent = line:match("^(%s*)")
+                line = current_indent .. bullet_char .. " " .. line:gsub("^%s*", "")
+            end
+            vim.api.nvim_buf_set_lines(0, line_num - 1, line_num, false, {line})
+        end
+    end
+    vim.api.nvim_win_set_cursor(0, original_cursor)
+end
+vim.keymap.set('v', '<leader>tb', function() toggle_bullet_list('-') end, {desc = 'Toggle bullet list (-)'})
+vim.keymap.set('n', '<leader>tb', function() toggle_bullet_list('-') end, {desc = 'Toggle bullet list (-)'})
+vim.keymap.set('v', '<leader>t*', function() toggle_bullet_list('*') end, {desc = 'Toggle bullet list (*)'})
+vim.keymap.set('n', '<leader>t*', function() toggle_bullet_list('*') end, {desc = 'Toggle bullet list (*)'})
+vim.keymap.set('v', '<leader>t+', function() toggle_bullet_list('+') end, {desc = 'Toggle bullet list (+)'})
+vim.keymap.set('n', '<leader>t+', function() toggle_bullet_list('+') end, {desc = 'Toggle bullet list (+)'})

@@ -22,3 +22,8 @@ hash = "1a8af82f6246942bd700316a16c4e14a"
 use = "gosxrgxx/flexoki-dark"
 rev = "28e1977"
 hash = "9dbbb64ea20f9f1271c31951dea55c7b"
+
+[[flavor.deps]]
+use = "AdithyanA2005/nord"
+rev = "bdf0bd4"
+hash = "f852b84d6992120b5a7101c1f7b92287"

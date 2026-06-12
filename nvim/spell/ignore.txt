@@ -1,0 +1,8 @@
+# Add words here (one per line) to stop them being flagged as misspellings.
+# Lines starting with # are comments.
+# After saving this file, run  :ReloadIgnoreWords  inside nvim.
+#
+# Examples:
+# Typst
+# tinymist
+# texlab

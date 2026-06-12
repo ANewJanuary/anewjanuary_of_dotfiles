@@ -1,0 +1,326 @@
+// Layout rules
+layout {
+  gaps 0
+  center-focused-column "on-overflow"
+  preset-column-widths {
+    proportion 0.5
+    proportion 1.0
+  }
+  background-color "#020000"
+  focus-ring {
+    off
+  }
+  border {
+    width 0
+    active-color "#974b4600"
+    inactive-color "#50505000"
+  }
+}
+// STARTUP #####################################################
+spawn-at-startup "dunst"
+spawn-sh-at-startup "dms run"
+spawn-at-startup "syncthing"
+spawn-at-startup "/usr/libexec/kf6/polkit-kde-authentication-agent-1"
+spawn-sh-at-startup "sh -c ~/Vshrd/shell-scripts/wallbg.sh dark"
+spawn-sh-at-startup "systemctl --user enable opentabletdriver.service"
+
+// CUSTOM KEYBINDS #############################################
+binds {
+  // Custom launchers
+  Mod+Shift+S { show-hotkey-overlay; }
+  Mod+Return hotkey-overlay-title="kitty" { spawn "kitty"; }
+  Mod+R hotkey-overlay-title="fuzzel" { spawn "fuzzel"; }
+  Mod+B hotkey-overlay-title="Firefox" { spawn "firefox"; }
+  // Waybar
+  Mod+W hotkey-overlay-title="dashboard" { spawn-sh "bash ~/Vshrd/shell-scripts/dmstog.sh"; }
+  // Rotate screen
+  Mod+Shift+N hotkey-overlay-title="Rotate to portrait" { spawn-sh "niri msg -j output DP-1 transform 90"; }
+  Mod+Shift+M hotkey-overlay-title="Rotate to Landscape" { spawn-sh "niri msg -j output DP-1 transform normal"; }
+
+  // SHELL SCRIPTS
+  Mod+P hotkey-overlay-title="Screenshot" { spawn-sh "~/Vshrd/shell-scripts/screenshot.sh"; }
+  Mod+Shift+P hotkey-overlay-title="imgclip" { spawn-sh "~/Vshrd/shell-scripts/imgclip.sh"; }
+  Mod+E hotkey-overlay-title="Neovide" { spawn-sh "~/Vshrd/shell-scripts/neovim_handler.sh"; }
+  Mod+I hotkey-overlay-title="Macros" { spawn-sh "/home/artin/Vshrd/shell-scripts/macros.sh"; }
+  Mod+Shift+I hotkey-overlay-title="New Macro" { spawn-sh "/home/artin/Vshrd/shell-scripts/new_macro.sh"; }
+  Mod+Shift+E hotkey-overlay-title="Emoji Picker" { spawn "rofimoji"; }
+  Mod+D hotkey-overlay-title="Date" { spawn-sh "/home/artin/Vshrd/shell-scripts/date.sh"; }
+  Mod+T hotkey-overlay-title="Timer" { spawn-sh "/home/artin/Vshrd/shell-scripts/timer.sh"; }
+  Mod+Shift+T hotkey-overlay-title="Kill Timer" { spawn-sh "/home/artin/Vshrd/shell-scripts/timer.sh k"; }
+  Mod+Shift+A hotkey-overlay-title="Open file" { spawn-sh "/home/artin/Vshrd/shell-scripts/open.sh"; }
+  Mod+Shift+R hotkey-overlay-title="Open recents" { spawn-sh "/home/artin/Vshrd/shell-scripts/open.sh -r"; }
+
+  // Misc
+  Mod+Tab { focus-workspace-previous; }
+  Mod+A { switch-preset-column-width; }
+  Mod+M { fullscreen-window; }
+  Mod+C { center-column; }
+  Mod+Shift+Q { quit; }
+  Mod+Shift+B { power-off-monitors; }
+  Mod+V       { toggle-window-floating; }
+  Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+  // Super+Ctrl+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+
+  // Audio
+  XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+  XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+  XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+  XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+  XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+  XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
+  XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+  XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+
+  // Brightness
+  XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+  XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+
+  // Open/close the Overview: a zoomed-out view of workspaces and windows.
+  Mod+O repeat=false { toggle-overview; }
+  Mod+Q repeat=false { close-window; }
+
+  // Navigation
+  Mod+H     { focus-column-left; }
+  Mod+L     { focus-column-right; }
+
+  // Moving
+  Mod+Shift+H     { move-column-left; }
+  Mod+Shift+L     { move-column-right; }
+
+  Mod+Home { focus-column-first; }
+  Mod+End  { focus-column-last; }
+  Mod+Ctrl+Home { move-column-to-first; }
+  Mod+Ctrl+End  { move-column-to-last; }
+  Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+  Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+  Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+  Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+  Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+  Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+  Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+  Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+
+  // Workspace management
+  Mod+J              { focus-workspace-down; }
+  Mod+K              { focus-workspace-up; }
+  Mod+Shift+J     { move-column-to-workspace-down; }
+  Mod+Shift+K     { move-column-to-workspace-up; }
+
+  //sz
+  Mod+1 { focus-workspace "ᚹ"; }
+  Mod+2 { focus-workspace "ᚺ"; }
+  Mod+3 { focus-workspace "ᛞ"; }
+  Mod+4 { focus-workspace "ᛗ"; }
+  Mod+5 { focus-workspace "ᛟ"; }
+  Mod+6 { focus-workspace "ᛖ"; }
+  Mod+7 { focus-workspace "ᛒ"; }
+  Mod+8 { focus-workspace "ᚠ"; }
+  Mod+9 { focus-workspace "ᚨ"; }
+  Mod+0 { focus-workspace "ᛊ"; }
+  Mod+Shift+1 { move-column-to-workspace "ᚹ"; }
+  Mod+Shift+2 { move-column-to-workspace "ᚺ"; }
+  Mod+Shift+3 { move-column-to-workspace "ᛞ"; }
+  Mod+Shift+4 { move-column-to-workspace "ᛗ"; }
+  Mod+Shift+5 { move-column-to-workspace "ᛟ"; }
+  Mod+Shift+6 { move-column-to-workspace "ᛖ"; }
+  Mod+Shift+7 { move-column-to-workspace "ᛒ"; }
+  Mod+Shift+8 { move-column-to-workspace "ᚠ"; }
+  Mod+Shift+9 { move-column-to-workspace "ᚨ"; }
+  Mod+Shift+0 { move-column-to-workspace "ᛊ"; }
+
+  Mod+Ctrl+J { move-workspace-down; }
+  Mod+Ctrl+K { move-workspace-up; }
+  Mod+Ctrl+H { focus-monitor-left; }
+  Mod+Ctrl+L { focus-monitor-right; }
+  // Actions to switch layouts.
+  // Mod+Space       { switch-layout "next"; }
+  // Mod+Shift+Space { switch-layout "prev"; }
+
+  Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+}
+
+switch-events {
+  lid-close {
+    spawn "/home/artin/Vshrd/shell-scripts/swaylock.sh"
+  }
+}
+
+input {
+  keyboard {
+    xkb {
+      layout "de"
+    }
+  }
+  touchpad {
+    tap
+    // dwt
+    // dwtp
+    // drag false
+    // drag-lock
+    natural-scroll
+    accel-speed 0.2
+    accel-profile "flat"
+    scroll-method "two-finger"
+  }
+
+  mouse {
+    accel-speed 0.2
+    accel-profile "flat"
+  }
+}
+
+output "eDP-1" {
+  mode "1920x1200@120.000"
+  scale 1
+  transform "normal"
+
+  // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
+  // so to put another output directly adjacent to it on the right, set its x to 1920.
+  position x=0 y=0
+}
+output "PNP(AOC) Q27G2G4 0x00000920" {
+  mode "2560x1440@143.912"
+  scale 1.1
+  position x=0 y=0
+}
+
+// DECORATIONS #############################################
+// blur
+blur {
+  on
+  passes 4
+  offset 4.0
+  noise 0.02
+  saturation 1.5
+}
+// Window rules
+window-rule {
+  background-effect {
+    blur true
+  }
+  match is-active=false
+  opacity 0.98
+}
+window-rule {
+  match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+  open-floating true
+}
+window-rule {
+  match app-id=r#"zenity$"#
+  open-floating true
+}
+window-rule {
+  match app-id="float"
+  open-floating true
+}
+window-rule {
+  geometry-corner-radius 0
+  clip-to-geometry true
+}
+window-rule {
+  draw-border-with-background false
+}
+
+// misc
+hotkey-overlay {
+  skip-at-startup
+}
+prefer-no-csd true
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+animations {
+  slowdown 1.2
+}
+
+// env variables
+environment {
+  QT_QPA_PLATFORMTHEME "kde"
+  QT_STYLE_OVERRIDE "kvantum"
+  KDE_SESSION_VERSION "6"
+  KDE_FULL_SESSION "true"
+  GDK_SCALE "1.5"
+  XCURSOR_SIZE "32"
+  HYPRCURSOR_THEME "Bibata-Modern-Ice"
+  HYPRCURSOR_SIZE "32"
+  XCURSOR_THEME "Bibata-Modern-Ice"
+  XCURSOR_SIZE "32"
+}
+
+// CUSTOM WORKSPACES #####################################
+//
+// workflow
+// ipe
+// rnote
+// xopp
+workspace "ᚹ"
+window-rule {
+  match app-id=r#"(?i)rnote"#
+  match app-id=r#"(?i)xournalpp"#
+  match app-id=r#"(?i)ipe"#
+  open-on-workspace "ᚹ"
+  default-column-width { proportion 1.0; }
+}
+// coding stuff
+workspace "ᚺ"
+window-rule {
+  match app-id=r#"(?i)jetbrains"#
+  match app-id=r#"(?i)code"#
+  open-on-workspace "ᚺ"
+  default-column-width { proportion 1.0; }
+}
+// documents like pdfs etc
+workspace "ᛞ"
+window-rule {
+  match app-id=r#"(?i)zathura"#
+  match app-id=r#"(?i)mupdf"#
+  open-on-workspace "ᛞ"
+  default-column-width { proportion 1.0; }
+}
+
+// browser
+workspace "ᛗ"
+window-rule {
+  match app-id=r#"(?i)firefox"#
+  open-on-workspace "ᛗ"
+  default-column-width { proportion 1.0; }
+}
+// operator,
+// neovide instance with default session
+// yazi for file management
+// kitty terminal
+workspace "ᛟ"
+window-rule {
+  match app-id=r#"(?i)neovide"#
+  open-on-workspace "ᛟ"
+  default-column-width { proportion 1.0; }
+}
+
+// misc
+workspace "ᛖ"
+
+// whatever background tasks have to be here
+workspace "ᛒ"
+
+// game
+// steam
+// lutries
+workspace "ᚠ"
+window-rule {
+  match app-id=r#"steam$"#
+  match app-id=r#"^steam_app_"#
+  open-on-workspace "ᚠ"
+  open-floating true
+}
+
+// audio stuff
+// cmus
+// pavu control
+// maybe youtube music
+workspace "ᚨ"
+
+// settings
+// nmtui
+// bluetui
+// tuxedo control center
+workspace "ᛊ"
+
+include "dms/cursor.kdl"

@@ -1,0 +1,16 @@
+- background: #252933
+- slightly lighet bg: #3a4151
+- slightly darker bg: 1f202b
+- wikipedia bg: 101418
+- foreground: #f5f5f5
+- selection: #4c566a
+- cyan: #88c0d0
+- blue: #5e81ac
+- red: #bf616a
+- orange: #d08770
+- neonorange: #ff7f50
+- yellow: #ebcb8b
+- neonyellow: #fff25c
+- green: #a3be8c
+- pink: #b48ead
+- neonpink: #dd459d

@@ -16,14 +16,20 @@ max_height = 2000
 xopp = [
 	{ run = 'xournalpp "$@"', block = false, orphan = true, for = "unix", desc = "Xournalpp" },
 ]
+ipe = [
+	{ run = 'ipe "$@"', block = false, orphan = true, for = "unix", desc = "ipe" },
+]
+emacsclient = [
+	{ run = 'emacsclient "$@"', block = false, orphan = true, for = "unix", desc = "Emacsclient"}
+]
 rnote = [
-	{ run = 'rnote "$@"', block = false, orphan = true, for = "unix", desc = "Rnote" },
+	{ run = 'flatpak run com.github.flxzt.rnote "$@"', block = false, orphan = true, for = "unix", desc = "Rnote" },
 ]
 play = [
 	{ run = 'mpv "$@"', block = true, for = "unix" },
 ]
 edit = [
-	{ run = 'hx "$@"', block = true, for = "unix" },
+	{ run = '/home/artin/Vshrd/shell-scripts/neovim_handler.sh "$@"', block = true, orphan=true,for = "unix" },
 ]
 open = [
 	{ run = 'xdg-open "$@"', desc = "Open" },
@@ -42,9 +48,10 @@ draw = [
 ]
 [open]
 rules = [
-	{ name = "*.rnote", use = "rnote" },
-	{ name = "*.xopp", use = "xopp" },
-	{ name = "*.drawio", use = "draw" },
+	{ url = "*.rnote", use = "rnote" },
+	{ url = "*.xopp", use = "xopp" },
+	{ url = "*.drawio", use = "draw" },
+	{ url  = "*.ipe", use = "ipe" },
 	{ mime = "text/*", use = "edit" },
 	{ mime = "video/*", use = "play" },
 	{ mime = "music/*", use = "play" },
@@ -55,28 +62,28 @@ rules = [
 	{ mime = "application/oasis.opendocument.text", use = "office" },
 
 	# { mime = "application/json", use = "edit" },
-	{ name = "*.json", use = "edit" },
-	{ name = "*.toml", use = "edit" },
-	{ name = "*.md", use = "edit" },
-	{ name = "*.lua", use = "edit" },
-	{ name = "*.py", use = "edit" },
-	{ name = "*.org", use = "edit" },
-	{ name = "*.typ", use = "edit" },
+	{ url  = "*.json", use = "edit" },
+	{ url = "*.toml", use = "edit" },
+	{ url  = "*.md", use = "edit" },
+	{ url  = "*.lua", use = "edit" },
+	{ url  = "*.py", use = "edit" },
+	{ url  = "*.org", use = "edit" },
+	{ url  = "*.typ", use = "edit" },
 
 	# Multiple openers for a single rule
-	{ name = "*.html", use = "edit" },
+	{ url  = "*.html", use = "edit" },
 ]
 [plugin]
 prepend_previewers = [
 	# HEIC previewer
 	{ mime = "image/heic", run = "heic" },
 	# RAF previewer
-	{ name = "*.raf", run = "raf" },
+	{ url  = "*.raf", run = "raf" },
 ]
 
 append_previewers = [
 	# My fallback previewer
-	{ name = "*", run = "binary" },
+	{ url  = "*", run = "binary" },
 ]
 
 [input]
